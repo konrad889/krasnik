@@ -35,16 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static class ViewHolder {
 
-        EditText mEtUsername, mEtPassword;
-        Button mBtnLogin, mBtnRegister;
-        Toolbar toolbar;
-
         public ViewHolder(View root) {
-            mEtUsername = (EditText) root.findViewById(R.id.login_et_fragment_user_name);
-            mEtPassword = (EditText) root.findViewById(R.id.login_fragment_user_password);
-            mBtnLogin = (Button) root.findViewById(R.id.login_btn_fragment_user_login);
-            mBtnRegister = (Button) root.findViewById(R.id.login_btn_fragment_user_register);
-            toolbar = (Toolbar) root.findViewById(R.id.toolbar);
+
         }
     }
 
@@ -52,15 +44,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setElementClicable();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        if (mAuth.getCurrentUser() != null) {
-            onAuthSuccess(mAuth.getCurrentUser());
-        }
+
     }
 
     @Override
@@ -71,110 +60,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
-    }
-
-
-    private boolean validateForm() {
-        boolean result = true;
-        if (TextUtils.isEmpty(layout.mEtUsername.getText().toString())) {
-            layout.mEtUsername.setError("Required");
-            result = false;
-        } else {
-            layout.mEtUsername.setError(null);
-        }
-
-        if (TextUtils.isEmpty(layout.mEtPassword.getText().toString())) {
-            layout.mEtPassword.setError("Required");
-            result = false;
-        } else {
-            layout.mEtPassword.setError(null);
-        }
-
-        return result;
-    }
-
-    private void signIn() {
-        if (!validateForm()) {
-            return;
-        }
-        String userName = layout.mEtUsername.getText().toString();
-        String userPassword = layout.mEtPassword.getText().toString();
-        mAuth.signInWithEmailAndPassword(userName, userPassword)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(Task<AuthResult> task) {
-
-                        if (task.isSuccessful()) {
-                            onAuthSuccess(task.getResult().getUser());
-                        } else {
-                            Toast.makeText(MainActivity.this, "Sign In Failed",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
-    private void signUp() {
-        if (!validateForm()) {
-            String userName = layout.mEtUsername.getText().toString();
-            String userPassword = layout.mEtPassword.getText().toString();
-            mAuth.createUserWithEmailAndPassword(userName, userPassword)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                onAuthSuccess(task.getResult().getUser());
-                            } else {
-                                Toast.makeText(MainActivity.this, "Sign up Failed",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-        }
-    }
-
-    private void onAuthSuccess(FirebaseUser user) {
-        String username = usernameFromEmail(user.getEmail());
-        writeNewUser(user.getUid(), username, user.getEmail());
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
-    }
-
-    private String usernameFromEmail(String email) {
-        if (email.contains("@")) {
-            return email.split("@")[0];
-        } else {
-            return email;
-        }
-    }
-
-    private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
-        mDatabase.child("users").child(userId).setValue(user);
-    }
-
-    private void setElementClicable() {
-        layout.mBtnRegister.setOnClickListener(onClick);
-        layout.mBtnLogin.setOnClickListener(onClick);
-    }
-
-    private View.OnClickListener onClick;
-
-    {
-        onClick = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v == layout.mBtnLogin) {
-                    signIn();
-                } else if (v == layout.mBtnRegister) {
-                    signUp();
-                }
-            }
-        };
-    }
-
-    public Toolbar getToolbar() {
-        return layout.toolbar;
     }
 
 }

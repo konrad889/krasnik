@@ -14,43 +14,37 @@
             android:id="@+id/toolbar"
             layout="@layout/tool_bar" />
 
-        <FrameLayout
-            android:id="@+id/activity_main_frame"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/login_et_fragment_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:hint="login" />
 
-                <EditText
-                    android:id="@+id/login_et_fragment_user_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="login" />
+            <EditText
+                android:id="@+id/login_fragment_user_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="password" />
 
-                <EditText
-                    android:id="@+id/login_fragment_user_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="password" />
+            <Button
+                android:id="@+id/login_btn_fragment_user_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="login" />
 
-                <Button
-                    android:id="@+id/login_btn_fragment_user_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="login" />
+            <Button
+                android:id="@+id/login_btn_fragment_user_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="register" />
 
-                <Button
-                    android:id="@+id/login_btn_fragment_user_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="register" />
-
-            </LinearLayout>
-        </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
 
