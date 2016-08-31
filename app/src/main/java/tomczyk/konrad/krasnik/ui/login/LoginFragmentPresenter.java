@@ -10,4 +10,9 @@ public class LoginFragmentPresenter extends BasePresenter<LoginFragment> {
     public interface loginInterface {
 
     }
+
+    @Override
+    public void onLoad(LoginFragment view) {
+        super.onLoad(view);
+    }
 }
