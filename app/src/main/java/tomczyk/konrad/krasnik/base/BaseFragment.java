@@ -1,4 +1,4 @@
-package tomczyk.konrad.krasnik.ui.base;
+package tomczyk.konrad.krasnik.base;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;

@@ -1,4 +1,4 @@
-package tomczyk.konrad.krasnik.ui.base;
+package tomczyk.konrad.krasnik.base;
 
 /**
  * Created by Konrad_Tomczyk on 31.08.2016.

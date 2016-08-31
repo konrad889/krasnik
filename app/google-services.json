@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "208286844150",
+    "firebase_url": "https://krasnik-b7049.firebaseio.com",
+    "project_id": "krasnik-b7049",
+    "storage_bucket": "krasnik-b7049.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208286844150:android:1622249b9eb0615c",
+        "android_client_info": {
+          "package_name": "konrad.tomczyk.krasnik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208286844150-4jttgpbvud8aa1s6ukoti5o5glu0o0sr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbEue9WBsxXQGiaowKlI_wTgVI-q5YnOo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
